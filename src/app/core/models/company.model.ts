@@ -1,0 +1,1 @@
+export type { Company, CompanyType } from './project.model';

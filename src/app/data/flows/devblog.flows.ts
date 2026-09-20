@@ -1,0 +1,101 @@
+import { Flow } from '../../core/models/flow.model';
+
+export const DEVBLOG_FLOWS: Flow[] = [
+    {
+        id: 'write-publish-post',
+        name: 'Write & Publish Article',
+        description: 'Author writes markdown post, previews, and publishes.',
+        icon: '✍️',
+        actor: 'Author',
+        difficulty: 'basic',
+        tags: ['markdown', 'publish', 'preview'],
+        steps: [
+            {
+                id: 's1',
+                title: 'Open editor',
+                description: 'GET /Posts/Create',
+                uiDescription: 'Split-pane editor: markdown on left, live preview on right.',
+                actor: 'Author',
+                request: { method: 'GET', route: '/Posts/Create', auth: 'Authorize(Roles=Author)' },
+                response: { status: 200, statusText: 'OK', body: { view: 'Posts/Create.cshtml' }, timeMs: 62, size: '22 KB' },
+            },
+            {
+                id: 's2',
+                title: 'Live markdown preview',
+                description: 'POST markdown → get HTML',
+                uiDescription: 'After 800ms debounce, preview panel updates with rendered HTML.',
+                actor: 'Author',
+                request: {
+                    method: 'POST', route: '/Posts/Preview', auth: 'Authorize',
+                    body: { markdown: '# Hello World\n\n```csharp\nvar x = 1;\n```' },
+                },
+                response: {
+                    status: 200, statusText: 'OK',
+                    body: { html: '<h1>Hello World</h1><pre><code class="language-csharp">...</code></pre>' },
+                    timeMs: 34, size: '0.6 KB',
+                },
+            },
+            {
+                id: 's3',
+                title: 'Publish post',
+                description: 'POST /Posts/Create',
+                uiDescription: 'Click "Publish" → confirm dialog → redirect to post page.',
+                actor: 'Author',
+                request: {
+                    method: 'POST', route: '/Posts/Create', auth: 'Authorize(Roles=Author)',
+                    body: { title: 'Building with Markdig', markdown: '...', tags: ['csharp', 'markdown'], status: 'Published' },
+                },
+                response: { status: 302, statusText: 'Redirect', headers: { Location: '/Posts/building-with-markdig' }, body: null, timeMs: 380, size: '0.4 KB' },
+                sideEffects: [
+                    'INSERT Posts (Slug="building-with-markdig", Status="Published")',
+                    'INSERT PostTags (2 rows)',
+                    'UPDATE Tags SET PostCount=PostCount+1',
+                    'Notify RSS subscribers',
+                ],
+            },
+        ],
+    },
+    {
+        id: 'comment-moderation',
+        name: 'Comment Moderation',
+        description: 'Comment submitted → admin reviews → approved/rejected.',
+        icon: '💬',
+        actor: 'Reader + Admin',
+        difficulty: 'basic',
+        tags: ['comment', 'moderation', 'approval'],
+        steps: [
+            {
+                id: 's1',
+                title: 'Submit comment',
+                description: 'Reader posts comment',
+                uiDescription: 'Comment appears as "Pending moderation" (greyed out).',
+                actor: 'Reader',
+                request: {
+                    method: 'POST', route: '/Comments/Create', auth: 'Authorize',
+                    body: { postId: 42, content: 'Great article! Very helpful.' },
+                },
+                response: { status: 302, statusText: 'Redirect', headers: { Location: '/Posts/building-with-markdig' }, body: null, timeMs: 180, size: '0.3 KB' },
+                sideEffects: ['INSERT Comments (Approved=false)', 'Notify post author'],
+            },
+            {
+                id: 's2',
+                title: 'Admin queue',
+                description: 'Pending comments',
+                uiDescription: 'Moderation queue with approve/reject buttons.',
+                actor: 'Admin',
+                request: { method: 'GET', route: '/Admin/Moderation', auth: 'Authorize(Roles=Admin)' },
+                response: { status: 200, statusText: 'OK', body: { pending: [{ id: 88, content: 'Great article!', author: 'Sara' }] }, timeMs: 82, size: '16 KB' },
+            },
+            {
+                id: 's3',
+                title: 'Approve',
+                description: 'AJAX approval',
+                uiDescription: 'Comment row fades out. Green toast: "Approved".',
+                actor: 'Admin',
+                request: { method: 'POST', route: '/Admin/Moderation/88/Approve', auth: 'Authorize(Roles=Admin)' },
+                response: { status: 200, statusText: 'OK', body: { success: true }, timeMs: 62, size: '0.1 KB' },
+                sideEffects: ['UPDATE Comments SET Approved=true', 'Send email to commenter'],
+            },
+        ],
+    },
+];
