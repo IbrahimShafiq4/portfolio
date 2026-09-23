@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core';
+import { Service, computed, signal } from '@angular/core';
 import { SidebarPanel } from '../models/tab.model';
 
 export type LayoutMode = 'desktop' | 'tablet' | 'mobile';
@@ -11,11 +11,17 @@ export class LayoutService {
     readonly terminalOpen = signal<boolean>(false);
     readonly terminalHeight = signal<number>(280);
     readonly mobileSidebarOpen = signal<boolean>(false);
+    readonly mobileSheetDragY = signal<number>(0);
     readonly viewport = signal<LayoutMode>('desktop');
-
     readonly previewState = signal<PreviewWindowState>('normal');
 
-    constructor() { this.watchViewport(); }
+    readonly isMobile = computed(() => this.viewport() === 'mobile');
+    readonly isTablet = computed(() => this.viewport() === 'tablet');
+    readonly isDesktop = computed(() => this.viewport() === 'desktop');
+
+    constructor() {
+        this.watchViewport();
+    }
 
     private watchViewport(): void {
         const compute = () => {
@@ -32,6 +38,7 @@ export class LayoutService {
         this.sidebarPanel.set(panel);
         if (this.viewport() === 'mobile') {
             this.mobileSidebarOpen.set(true);
+            this.mobileSheetDragY.set(0);
         } else {
             this.sidebarOpen.set(true);
         }
@@ -44,6 +51,7 @@ export class LayoutService {
             } else {
                 this.sidebarPanel.set(panel);
                 this.mobileSidebarOpen.set(true);
+                this.mobileSheetDragY.set(0);
             }
             return;
         }
@@ -58,6 +66,7 @@ export class LayoutService {
     closeSidebar(): void {
         this.sidebarOpen.set(false);
         this.mobileSidebarOpen.set(false);
+        this.mobileSheetDragY.set(0);
     }
 
     toggleTerminal(): void { this.terminalOpen.update(v => !v); }

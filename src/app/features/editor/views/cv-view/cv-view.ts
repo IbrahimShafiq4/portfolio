@@ -17,7 +17,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
         </div>
         <div class="cv-actions">
           <button class="pill" (click)="print()">🖨 Print</button>
-          <a class="pill primary" href="/assets/Ibrahim-Shafiq-Angular-DotNet-Full-Stack-CV.pdf"
+          <a class="pill primary" href="./../../../../../../assets/Ibrahim-Shafiq-Angular-DotNet-Full-Stack-CV.pdf"
              download="Ibrahim-Shafiq-CV.pdf">⬇ Download PDF</a>
         </div>
       </header>
@@ -26,7 +26,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
         @if (tab() === 'embed') {
           <iframe
             class="cv-frame"
-            src="/assets/Ibrahim-Shafiq-Angular-DotNet-Full-Stack-CV.pdf"
+            src="./../../../../../../assets/Ibrahim-Shafiq-Angular-DotNet-Full-Stack-CV.pdf"
             title="Ibrahim Shafiq CV">
           </iframe>
         } @else {

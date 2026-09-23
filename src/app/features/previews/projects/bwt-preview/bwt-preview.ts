@@ -13,6 +13,7 @@ import { PreviewNavItem, PreviewShellComponent } from '../../shared/preview-shel
       subtitle="Engineering standards"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @if (active() === 'quality') {
         <div class="quality">

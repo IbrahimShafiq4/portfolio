@@ -27,11 +27,10 @@ interface Endpoint {
       subtitle="ASP.NET Core MVC"
       [nav]="nav()"
       [active]="active()"
-      (activeChange)="onNav($event)"
+      (activeChange)="active.set($any($event))"
       [toolbarActions]="toolbar()"
       [notifications]="notifs()"
       [searchPlaceholder]="searchPlaceholder()"
-      (searchChange)="onSearch($event)"
     >
       @if (active() === 'flows') {
         <app-flows-panel projectId="creatorhub" />

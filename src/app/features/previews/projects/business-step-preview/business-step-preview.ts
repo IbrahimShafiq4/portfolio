@@ -13,6 +13,7 @@ import { PreviewNavItem, PreviewShellComponent } from '../../shared/preview-shel
       subtitle="Corporate site"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @if (active() === 'home') {
         <div class="home">

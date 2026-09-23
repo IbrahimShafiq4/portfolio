@@ -1,9 +1,6 @@
 export type Tech = 'angular' | 'dotnet' | 'both';
-
 export type CompanyType = 'military' | 'startup' | 'freelance' | 'personal';
-
 export type ProjectCategory = 'FullStack' | 'Frontend' | 'Backend' | 'MVC';
-
 export type DemoKind =
     | 'transferorders' | 'reminder' | 'enlisted' | 'sectorreports' | 'normalization'
     | 'arroom' | 'almotafiq' | 'azaccounting' | 'bwt' | 'businessstep'
@@ -23,6 +20,15 @@ export interface Company {
     note?: string;
 }
 
+export interface ProjectImpact {
+    targetAudience: number;
+    audienceLabel: string;
+    realUsage: string;
+    impactSummary: string;
+    tradeoffs: string[];
+    metrics: { label: string; value: string; trend: 'up' | 'down' | 'neutral'; }[];
+}
+
 export interface Project {
     id: string;
     name: string;
@@ -35,4 +41,7 @@ export interface Project {
     stack: string[];
     demo?: DemoKind;
     status: 'live' | 'archived' | 'practice' | 'confidential';
+    impact: ProjectImpact;
+    tagline: string;
+    heroImage?: string;
 }

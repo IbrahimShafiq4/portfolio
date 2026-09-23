@@ -15,6 +15,7 @@ interface Layer { id: number; x: number; y: number; blur: number; spread: number
       subtitle="CSS generator"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         <button class="pill primary" (click)="copy()">{{ copied() ? '✓ Copied!' : '📋 Copy CSS' }}</button>

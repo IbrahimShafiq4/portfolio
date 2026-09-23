@@ -17,6 +17,7 @@ interface ClassRoom { id: number; name: string; students: number; subject: strin
       subtitle="Learning platform"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @if (active() === 'student') {
         <div class="student-view">

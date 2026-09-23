@@ -16,6 +16,7 @@ interface CartItem { dish: Dish; qty: number; }
       subtitle="Order food online"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         @if (cartCount() > 0) {

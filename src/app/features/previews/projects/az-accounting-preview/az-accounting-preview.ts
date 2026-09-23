@@ -16,6 +16,7 @@ interface Transaction { id: number; date: string; desc: string; category: string
       subtitle="Financial tracking"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         <button class="pill primary">＋ New Entry</button>

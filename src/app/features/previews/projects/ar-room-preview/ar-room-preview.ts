@@ -18,6 +18,7 @@ interface ScrapedProduct {
       subtitle="Product aggregation"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @if (active() === 'search') {
         <div class="search-view">

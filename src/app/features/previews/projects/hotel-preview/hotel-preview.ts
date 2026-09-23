@@ -18,6 +18,7 @@ interface Room {
       subtitle="Cairo · 5-star"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         @if (bookingCount() > 0) {

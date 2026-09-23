@@ -15,6 +15,7 @@ interface City { id: number; name: string; country: string; emoji: string; temp:
       subtitle="Global forecasts"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         <div class="search-box">

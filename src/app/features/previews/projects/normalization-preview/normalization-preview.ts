@@ -14,6 +14,7 @@ import { PreviewShellComponent, PreviewNavItem } from '../../shared/preview-shel
       subtitle="FOE · Data integrity"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions class="conf-badge">🔒 Confidential</div>
 

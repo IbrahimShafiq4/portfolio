@@ -13,6 +13,7 @@ import { PreviewNavItem, PreviewShellComponent } from '../../shared/preview-shel
       subtitle="Browser-based editing"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         <button class="pill" (click)="reset()">↺ Reset</button>

@@ -17,6 +17,7 @@ interface Habit { id: number; name: string; done: boolean; streak: number; }
       subtitle="Habits · Streaks · Focus"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         <button class="pill primary" (click)="addTask()">＋ New Task</button>

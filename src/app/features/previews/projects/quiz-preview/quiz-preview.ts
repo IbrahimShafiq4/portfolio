@@ -23,6 +23,7 @@ interface Attempt {
       subtitle="Student & Instructor"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @switch (active()) {
         @case ('student')    { <ng-container *ngTemplateOutlet="studentTpl" /> }

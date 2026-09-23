@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&display=swap");
 
 :root {
-    /* Typography */
-    --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", sans-serif;
-    --sf-mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, Monaco, monospace;
+    --sf: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    --sf-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Monaco, monospace;
 
-    /* Radii — continuous curves */
     --r-xs: 6px;
     --r-sm: 10px;
     --r-md: 14px;
@@ -14,7 +12,6 @@
     --r-2xl: 36px;
     --r-pill: 999px;
 
-    /* Timing */
     --t-fast: 140ms;
     --t-base: 260ms;
     --t-slow: 420ms;
@@ -22,7 +19,6 @@
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Type scale */
     --fs-2xs: 11px;
     --fs-xs: 12px;
     --fs-sm: 13px;
@@ -35,7 +31,6 @@
     --fs-4xl: 44px;
     --fs-5xl: 56px;
 
-    /* Layout */
     --h-titlebar: 52px;
     --h-statusbar: 28px;
     --w-activitybar: 56px;
@@ -44,7 +39,6 @@
     --h-tabs: 44px;
 }
 
-/* === THEMES === */
 [data-theme="default-light"] {
     color-scheme: light;
     --bg-root: #f5f5f7;
@@ -63,12 +57,22 @@
     --bg-selected: rgba(0, 122, 255, 0.12);
     --bg-terminal: #1e1e1e;
     --bg-terminal-text: #d4d4d4;
+    --bg-titlebar: #3c3c3c;
+    --bg-activity: #333333;
+    --bg-tab: #2d2d2d;
+    --bg-tab-active: #1e1e1e;
+    --bg-status: #007acc;
+    --bg-statusbar: #007acc;
     --label: rgba(0, 0, 0, 0.88);
     --label-2: rgba(60, 60, 67, 0.62);
     --label-3: rgba(60, 60, 67, 0.32);
     --label-4: rgba(60, 60, 67, 0.18);
+    --text: rgba(0, 0, 0, 0.88);
+    --text-muted: rgba(60, 60, 67, 0.62);
     --separator: rgba(60, 60, 67, 0.11);
     --separator-opaque: #d1d1d6;
+    --border: rgba(60, 60, 67, 0.11);
+    --border-soft: rgba(60, 60, 67, 0.18);
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -107,12 +111,22 @@
     --bg-selected: rgba(10, 132, 255, 0.22);
     --bg-terminal: #0d0d0f;
     --bg-terminal-text: #e5e5e7;
+    --bg-titlebar: #3c3c3c;
+    --bg-activity: #333333;
+    --bg-tab: #2d2d2d;
+    --bg-tab-active: #1e1e1e;
+    --bg-status: #007acc;
+    --bg-statusbar: #007acc;
     --label: rgba(255, 255, 255, 0.92);
     --label-2: rgba(235, 235, 245, 0.62);
     --label-3: rgba(235, 235, 245, 0.32);
     --label-4: rgba(235, 235, 245, 0.18);
+    --text: rgba(255, 255, 255, 0.92);
+    --text-muted: rgba(235, 235, 245, 0.62);
     --separator: rgba(84, 84, 88, 0.5);
     --separator-opaque: #38383a;
+    --border: rgba(84, 84, 88, 0.5);
+    --border-soft: rgba(84, 84, 88, 0.4);
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(255, 255, 255, 0.04);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -151,12 +165,22 @@
     --bg-selected: rgba(88, 166, 255, 0.15);
     --bg-terminal: #010409;
     --bg-terminal-text: #c9d1d9;
+    --bg-titlebar: #161b22;
+    --bg-activity: #010409;
+    --bg-tab: #161b22;
+    --bg-tab-active: #0d1117;
+    --bg-status: #1f6feb;
+    --bg-statusbar: #1f6feb;
     --label: #c9d1d9;
     --label-2: #8b949e;
     --label-3: #6e7681;
     --label-4: #484f58;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
     --separator: #30363d;
     --separator-opaque: #21262d;
+    --border: #30363d;
+    --border-soft: #30363d;
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.04);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
@@ -195,12 +219,22 @@
     --bg-selected: rgba(136, 192, 208, 0.18);
     --bg-terminal: #242933;
     --bg-terminal-text: #d8dee9;
+    --bg-titlebar: #272c36;
+    --bg-activity: #272c36;
+    --bg-tab: #2b303b;
+    --bg-tab-active: #2e3440;
+    --bg-status: #5e81ac;
+    --bg-statusbar: #5e81ac;
     --label: #d8dee9;
     --label-2: #aab4c4;
     --label-3: #7b88a1;
     --label-4: #565f75;
+    --text: #d8dee9;
+    --text-muted: #aab4c4;
     --separator: #434c5e;
     --separator-opaque: #3b4252;
+    --border: #434c5e;
+    --border-soft: #434c5e;
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -239,12 +273,22 @@
     --bg-selected: rgba(38, 139, 210, 0.16);
     --bg-terminal: #002b36;
     --bg-terminal-text: #93a1a1;
+    --bg-titlebar: #eee8d5;
+    --bg-activity: #eee8d5;
+    --bg-tab: #eee8d5;
+    --bg-tab-active: #fdf6e3;
+    --bg-status: #268bd2;
+    --bg-statusbar: #268bd2;
     --label: #586e75;
     --label-2: #839496;
     --label-3: #93a1a1;
     --label-4: #b8b8a0;
+    --text: #586e75;
+    --text-muted: #839496;
     --separator: rgba(88, 110, 117, 0.2);
     --separator-opaque: #d9d2bd;
+    --border: rgba(88, 110, 117, 0.2);
+    --border-soft: rgba(88, 110, 117, 0.15);
     --shadow-xs: 0 1px 2px rgba(88, 110, 117, 0.08);
     --shadow-sm: 0 2px 8px rgba(88, 110, 117, 0.1);
     --shadow-md: 0 8px 24px rgba(88, 110, 117, 0.14);
@@ -283,12 +327,22 @@
     --bg-selected: rgba(166, 226, 46, 0.15);
     --bg-terminal: #1e1f1c;
     --bg-terminal-text: #f8f8f2;
+    --bg-titlebar: #1e1f1c;
+    --bg-activity: #1e1f1c;
+    --bg-tab: #1e1f1c;
+    --bg-tab-active: #272822;
+    --bg-status: #75715e;
+    --bg-statusbar: #75715e;
     --label: #f8f8f2;
     --label-2: #c5c5b8;
     --label-3: #a0a094;
     --label-4: #75715e;
+    --text: #f8f8f2;
+    --text-muted: #c5c5b8;
     --separator: #3e3d32;
     --separator-opaque: #2a2a26;
+    --border: #3e3d32;
+    --border-soft: #3e3d32;
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55);
@@ -309,48 +363,25 @@
     --type: #66d9ef;
 }
 
-/* Accent overrides */
-[data-accent="purple"] {
-    --accent: #af52de;
-    --accent-soft: rgba(175, 82, 222, 0.16);
-    --accent-hover: #9744c8;
-}
-[data-accent="pink"] {
-    --accent: #ff2d55;
-    --accent-soft: rgba(255, 45, 85, 0.16);
-    --accent-hover: #e0244a;
-}
-[data-accent="orange"] {
-    --accent: #ff9500;
-    --accent-soft: rgba(255, 149, 0, 0.18);
-    --accent-hover: #e08600;
-}
-[data-accent="green"] {
-    --accent: #34c759;
-    --accent-soft: rgba(52, 199, 89, 0.16);
-    --accent-hover: #2eb14e;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
 }
+
 html,
 body {
     height: 100%;
     overflow: hidden;
-}
-
-body {
     font-family: var(--sf);
     font-size: var(--fs-sm);
-    line-height: 1.5;
+    line-height: 1.47059;
     letter-spacing: -0.014em;
     background: var(--bg-root);
     color: var(--label);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     transition:
         background var(--t-base) var(--ease-smooth),
         color var(--t-base) var(--ease-smooth);
@@ -363,39 +394,409 @@ button {
     background: none;
     color: inherit;
 }
+
+button,
+a,
+[role="button"] {
+    touch-action: manipulation;
+}
+
 a {
     color: var(--accent);
     text-decoration: none;
 }
+
+a:hover {
+    text-decoration: underline;
+}
+
 input,
 select,
 textarea {
     font-family: inherit;
     color: inherit;
-    outline: none;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--label-4);
     border-radius: var(--r-pill);
     border: 3px solid transparent;
     background-clip: content-box;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--label-3);
     background-clip: content-box;
     border: 3px solid transparent;
 }
+
 ::selection {
     background: var(--accent-soft);
     color: var(--label);
+}
+
+.mono {
+    font-family: var(--sf-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.small {
+    font-size: var(--fs-2xs);
+}
+
+.muted {
+    color: var(--label-2);
+}
+
+.ok {
+    color: #34c759;
+}
+
+.warn {
+    color: #ff9500;
+}
+
+.danger {
+    color: #ff3b30;
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --w-sidebar: 280px;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --w-sidebar: 260px;
+    }
+}
+
+@media (max-width: 900px) {
+    :root {
+        --w-sidebar: 260px;
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        --h-titlebar: 48px;
+        --w-activitybar: 48px;
+        --h-tabs: 40px;
+        --h-terminal: 220px;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --h-titlebar: 48px;
+        --w-activitybar: 48px;
+        --h-tabs: 40px;
+        --h-terminal: 200px;
+    }
+
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --h-titlebar: 44px;
+        --h-statusbar: 24px;
+        --w-activitybar: 44px;
+        --h-tabs: 38px;
+    }
+
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    :root {
+        --h-titlebar: 42px;
+        --h-statusbar: 22px;
+        --w-activitybar: 42px;
+    }
+
+    html {
+        font-size: 12px;
+    }
+}
+
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+@media (hover: none) {
+    .nav-btn:hover,
+    .tab:hover,
+    .row-action:hover {
+        background: transparent;
+    }
+}
+
+html[data-view="recruiter"] {
+    --h-statusbar: 0px;
+}
+
+html[data-view="recruiter"] body {
+    overflow: auto;
+}
+
+html[data-view="recruiter"] ::-webkit-scrollbar {
+    width: 12px;
+}
+
+html[data-view="recruiter"] ::-webkit-scrollbar-thumb {
+    background: var(--accent-soft);
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+html[data-view="recruiter"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    background-clip: content-box;
+    border: 3px solid transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RECRUITER VIEW — Pixel × Newspaper × Hardware
+   ═══════════════════════════════════════════════════════════ */
+
+html[data-view="recruiter"] {
+    --rv-bg-0: #060a06;
+    --rv-bg-1: #0a140a;
+    --rv-bg-2: #0f1e0f;
+    --rv-pcb-line: #1a3a1a;
+    --rv-pcb-trace: #2d5a2d;
+    --rv-pcb-glow: #3d7a3d;
+    --rv-paper: #f2e6c8;
+    --rv-paper-2: #e5d5a8;
+    --rv-paper-3: #d9c58e;
+    --rv-ink: #0d0d0d;
+    --rv-ink-2: #2a2a2a;
+    --rv-ink-soft: #5a5a52;
+    --rv-copper: #b87333;
+    --rv-copper-dark: #8a5624;
+    --rv-gold: #d4a017;
+    --rv-green: #00ff41;
+    --rv-green-dim: #0a8a2a;
+    --rv-red: #c41e1e;
+    --rv-red-dark: #8a1414;
+    --rv-blue: #2d5a8a;
+    --rv-crt-glow: 0 0 8px currentColor, 0 0 16px currentColor;
+
+    --rv-display: "Playfair Display", "Amiri", "Times New Roman", serif;
+    --rv-arabic: "Amiri", "Playfair Display", serif;
+    --rv-pixel: "Press Start 2P", "Courier New", monospace;
+    --rv-terminal: "VT323", "Courier New", monospace;
+    --rv-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    --rv-border: 3px;
+    --rv-shadow-px: 4px 4px 0 0 var(--rv-ink);
+    --rv-shadow-px-r: 4px 4px 0 0 var(--rv-red);
+    --rv-shadow-px-g: 4px 4px 0 0 var(--rv-green);
+
+    background: var(--rv-bg-0);
+    color: var(--rv-paper);
+}
+
+html[data-view="recruiter"] body {
+    background: var(--rv-bg-0);
+    overflow: auto;
+}
+
+/* PCB grid background */
+html[data-view="recruiter"] .rv {
+    background-color: var(--rv-bg-0);
+    background-image:
+        linear-gradient(var(--rv-pcb-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rv-pcb-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position:
+        0 0,
+        0 0;
+    position: relative;
+}
+
+/* Scanlines overlay */
+html[data-view="recruiter"] .rv::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.08) 3px,
+        rgba(0, 0, 0, 0.08) 4px
+    );
+    mix-blend-mode: multiply;
+}
+
+/* Noise grain */
+html[data-view="recruiter"] .rv::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.04;
+    background-image:
+        radial-gradient(circle at 25% 25%, white 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, white 1px, transparent 1px);
+    background-size: 4px 4px;
+}
+
+/* Reusable pixel-box */
+.rv-pixel-box {
+    position: relative;
+    background: var(--rv-paper);
+    border: var(--rv-border) solid var(--rv-ink);
+    box-shadow: var(--rv-shadow-px);
+    color: var(--rv-ink);
+    transition:
+        transform 120ms ease-out,
+        box-shadow 120ms ease-out;
+}
+
+.rv-pixel-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--rv-ink);
+}
+
+.rv-pixel-box.dark {
+    background: var(--rv-bg-1);
+    border-color: var(--rv-green);
+    color: var(--rv-green);
+    box-shadow: 4px 4px 0 0 var(--rv-green-dim);
+}
+
+/* Newspaper rules */
+.rv-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 16px 0;
+    color: var(--rv-copper);
+}
+
+.rv-rule::before,
+.rv-rule::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: var(--rv-copper);
+}
+
+.rv-rule .diamond {
+    font-size: 12px;
+    color: var(--rv-copper);
+}
+
+/* Pixel divider */
+.rv-pixel-divider {
+    height: 8px;
+    background-image: linear-gradient(
+        90deg,
+        var(--rv-copper) 0,
+        var(--rv-copper) 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    background-size: 12px 100%;
+    background-repeat: repeat-x;
+    opacity: 0.5;
+    margin: 32px 0;
+}
+
+/* Terminal blink */
+@keyframes rv-blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.rv-blink {
+    animation: rv-blink 1s steps(1) infinite;
+}
+
+/* CRT pulse */
+@keyframes rv-crt-pulse {
+    0%,
+    100% {
+        text-shadow: 0 0 4px currentColor;
+    }
+    50% {
+        text-shadow:
+            0 0 12px currentColor,
+            0 0 24px currentColor;
+    }
+}
+
+/* Fan spin */
+@keyframes rv-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media print {
+    app-activity-bar,
+    app-sidebar,
+    app-terminal,
+    app-status-bar,
+    app-command-palette,
+    app-toast-container,
+    app-context-menu {
+        display: none !important;
+    }
+
+    .app {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto 1fr !important;
+        height: auto !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -403,6 +804,1168 @@ textarea {
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-contrast: more) {
+    :root {
+        --separator: rgba(60, 60, 67, 0.35);
+        --border: rgba(60, 60, 67, 0.35);
+        --border-soft: rgba(60, 60, 67, 0.4);
+        --label-2: rgba(60, 60, 67, 0.85);
+        --label-3: rgba(60, 60, 67, 0.6);
+    }
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--r-xs);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--t-base) var(--ease-out);
+}
+
+.fade-up {
+    animation: fadeUp var(--t-slow) var(--ease-spring);
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 640px) {
+    .scroll-smooth {
+        scroll-behavior: auto;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 16px;
+    }
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grow {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE OVERRIDES
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 720px) {
+    /* Title bar — compact */
+    app-title-bar .menu,
+    app-title-bar .theme-label,
+    app-title-bar .tb-center-sep,
+    app-title-bar .tb-center-mode {
+        display: none !important;
+    }
+
+    app-title-bar .tb-center {
+        font-size: 10px;
+        padding: 0 6px;
+    }
+
+    app-title-bar .tb-center b {
+        font-size: 10px;
+    }
+
+    app-title-bar .view-switch {
+        padding: 1px;
+    }
+
+    app-title-bar .vs-opt {
+        width: 22px;
+        height: 20px;
+        font-size: 11px;
+    }
+
+    app-title-bar .vs-slider {
+        width: 22px;
+        height: 20px;
+        top: 1px;
+        left: 1px;
+    }
+
+    app-title-bar .vs-slider.right {
+        transform: translateX(22px);
+    }
+
+    app-title-bar .theme-pill {
+        padding: 4px 8px;
+    }
+
+    app-title-bar .user-av {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    /* Editor panel — force width */
+    app-editor-panel,
+    app-editor-panel > *,
+    app-editor-panel .ep {
+        max-width: 100vw !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Dummy data editor overflow fix */
+    .preview-note,
+    .preview-note > * {
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Tables in previews */
+    .table-wrap,
+    .endpoint-table {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* KPI grids */
+    .kpis,
+    .stat-grid,
+    .resource-kpis,
+    .zone-stats-row,
+    .report-kpis,
+    .dv-stats,
+    .sec-stats {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Editor tabs — hide when not needed */
+    app-editor-tabs {
+        display: none;
+    }
+
+    /* Grid 2 columns → stack */
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --h-titlebar: 44px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — HORIZONTAL SCROLL FOR PROJECT VIEWS
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 720px) {
+    /* ─── EDITOR PANEL — يسمح بالـ horizontal scroll ─── */
+    app-editor-panel,
+    app-editor-panel > *,
+    app-editor-panel .ep {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+    }
+
+    /* ─── PREVIEW SHELL — المحتوى يحافظ على عرضه ─── */
+    app-preview-shell,
+    app-preview-shell > * {
+        display: block;
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* الـ shell نفسه يستخدم عرض ثابت minimum */
+    app-preview-shell .shell {
+        min-width: 360px;
+        width: 100%;
+    }
+
+    /* ─── المحتوى جوه الـ stage-body ─── */
+    app-preview-shell .stage-body {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        padding: 16px;
+    }
+
+    app-preview-shell .stage-body > * {
+        min-width: max-content;
+        width: 100%;
+    }
+
+    /* ─── الكلاسات اللي محتاجة حد أدنى للعرض ─── */
+    .view {
+        min-width: 640px !important;
+        max-width: none !important;
+    }
+
+    /* الجداول */
+    .table-wrap,
+    .endpoint-table,
+    .res-table,
+    .hist-table,
+    .reg-table,
+    .at-head,
+    .at-row,
+    .pt-row,
+    .bq-row {
+        min-width: 640px !important;
+    }
+
+    /* الـ grids */
+    .kpis,
+    .stat-grid,
+    .resource-kpis,
+    .zone-stats-row,
+    .report-kpis,
+    .dv-stats,
+    .sec-stats {
+        min-width: 640px !important;
+    }
+
+    /* Cards grid — يحافظ على الأعمدة */
+    .card-grid,
+    .classifieds,
+    .ops-card-grid,
+    .soldier-grid,
+    .unit-grid,
+    .training-grid,
+    .resource-grid,
+    .zone-grid,
+    .sector-grid,
+    .sec-grid {
+        min-width: 640px !important;
+        grid-template-columns: repeat(2, minmax(280px, 1fr)) !important;
+    }
+
+    /* الـ hero cards والـ charts */
+    .hero-card,
+    .chart-card,
+    .info-card,
+    .live-feed,
+    .sectors-preview,
+    .activity-timeline,
+    .timeline-section,
+    .batches-section {
+        min-width: 640px !important;
+    }
+
+    /* الـ grid-2 */
+    .grid-2 {
+        min-width: 640px !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* الـ modals تفضل كاملة الشاشة */
+    .modal {
+        max-width: calc(100vw - 24px) !important;
+        min-width: auto !important;
+    }
+
+    .modal-body {
+        min-width: 0 !important;
+        overflow-x: auto !important;
+    }
+
+    /* ─── Scrollbar marker بصري ─── */
+    app-preview-shell .stage-body::after {
+        content: "⟵ SWIPE ⟶";
+        position: sticky;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        width: max-content;
+        margin: 20px auto 0;
+        padding: 6px 16px;
+        background: var(--accent);
+        color: var(--accent-contrast);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        border-radius: 999px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        animation: hintFade 3s ease-out forwards;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    @keyframes hintFade {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+        }
+        15%,
+        70% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
+        }
+    }
+
+    /* ─── Scrollbar أفقي ظاهر ومسهل الاستخدام ─── */
+    app-preview-shell .stage-body::-webkit-scrollbar {
+        height: 6px;
+        width: 6px;
+    }
+
+    app-preview-shell .stage-body::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 3px;
+        border: 0;
+    }
+
+    app-preview-shell .stage-body::-webkit-scrollbar-track {
+        background: var(--bg-fill-2);
+    }
+
+    /* ─── الـ edge fade effect ─── */
+    app-preview-shell .stage {
+        position: relative;
+    }
+
+    app-preview-shell .stage::after {
+        content: "";
+        position: absolute;
+        top: 56px;
+        right: 0;
+        bottom: 0;
+        width: 24px;
+        background: linear-gradient(270deg, var(--bg-root) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 3;
+        opacity: 0.6;
+    }
+
+    /* ─── الـ dummy data editor كامل العرض ─── */
+    app-dummy-data-editor {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    app-dummy-data-editor .dde-banner {
+        min-width: 320px;
+    }
+
+    app-dummy-data-editor .dde-table {
+        min-width: 480px;
+    }
+
+    /* ─── الـ filters تفضل ثابتة فوق ─── */
+    .filter-tabs,
+    .filter-bar,
+    .filter-row,
+    .chip-filters {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--bg-root);
+        padding: 12px 0;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — RESPONSIVE-FIRST, HORIZONTAL SCROLL AS LAST RESORT
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 720px) {
+    /* ─── EDITOR PANEL — vertical scroll فقط ─── */
+    app-editor-panel,
+    app-editor-panel > *,
+    app-editor-panel .ep {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ─── كل عنصر جوه الـ editor ياخد عرض الشاشة ─── */
+    app-editor-panel * {
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+     WELCOME VIEW — FULL RESPONSIVE, NO HORIZONTAL SCROLL
+     ═══════════════════════════════════════════════════════════ */
+
+    .wv {
+        padding: 20px 16px 40px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .wv h1 {
+        font-size: clamp(28px, 9vw, 44px) !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.03em !important;
+    }
+
+    .wv .hero {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .wv .hero-inner {
+        width: 100% !important;
+    }
+    .wv .hero-summary {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+    .wv .hero-role {
+        font-size: 15px !important;
+    }
+
+    .wv .hero-actions {
+        flex-direction: column !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .wv .hero-actions .btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 18px !important;
+    }
+
+    .wv .hero-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        padding-top: 20px !important;
+    }
+
+    .wv .stat b {
+        font-size: 28px !important;
+    }
+
+    .wv .stat small {
+        font-size: 9px !important;
+    }
+
+    /* Quick access card ياخد الشاشة كاملة */
+    .wv .hero-quick {
+        position: static !important;
+        width: 100% !important;
+        padding: 18px !important;
+    }
+
+    /* العناوين الكبيرة */
+    .wv .block-head h2 {
+        font-size: clamp(20px, 6vw, 28px) !important;
+        line-height: 1.2 !important;
+    }
+
+    .wv .eyebrow {
+        font-size: 10px !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* Experience cards */
+    .wv .exp-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .wv .co-card {
+        padding: 16px !important;
+    }
+
+    .wv .co-top {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    .wv .co-meta b {
+        font-size: 13px !important;
+    }
+    .wv .co-meta small {
+        font-size: 10px !important;
+    }
+
+    .wv .co-projects {
+        gap: 4px !important;
+    }
+
+    .wv .proj-chip {
+        font-size: 10px !important;
+        padding: 4px 8px !important;
+    }
+
+    /* Skills grid */
+    .wv .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .wv .sk-card {
+        padding: 16px !important;
+    }
+    .wv .sk-head b {
+        font-size: 13px !important;
+    }
+    .wv .sk-chip {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+    }
+
+    /* Featured projects */
+    .wv .feat-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .wv .feat {
+        padding: 18px !important;
+        min-height: auto !important;
+    }
+
+    .wv .feat-name {
+        font-size: 16px !important;
+    }
+    .wv .feat-sum {
+        font-size: 12px !important;
+    }
+    .wv .fs-chip {
+        font-size: 9px !important;
+        padding: 2px 7px !important;
+    }
+
+    /* Index table — يتحول لـ list عمودي */
+    .wv .index-table {
+        background: transparent !important;
+        border: 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .wv .idx-row {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+        padding: 14px 16px !important;
+        background: var(--bg-surface-solid);
+        border: 0.5px solid var(--separator);
+        border-radius: var(--r-md);
+    }
+
+    .wv .idx-tech {
+        align-self: flex-start !important;
+    }
+
+    .wv .idx-name {
+        font-size: 13px !important;
+    }
+    .wv .idx-company {
+        font-size: 11px !important;
+    }
+    .wv .idx-status {
+        align-self: flex-start !important;
+        font-size: 9px !important;
+    }
+    .wv .idx-arrow {
+        display: none !important;
+    }
+
+    /* Index tabs */
+    .wv .index-tabs {
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        width: 100% !important;
+    }
+
+    .wv .idx-tab {
+        padding: 6px 10px !important;
+        font-size: 10px !important;
+    }
+
+    /* Footer */
+    .wv .foot {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        padding-top: 32px !important;
+    }
+
+    .wv .foot-contacts {
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .wv .foot-hints {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .wv .foot-link {
+        font-size: 12px !important;
+    }
+
+    /* Block meta */
+    .wv .block-meta {
+        font-size: 10px !important;
+        display: block !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+     PROJECT / CV / FILE VIEWS — Responsive by default
+     ═══════════════════════════════════════════════════════════ */
+
+    app-cv-view,
+    app-file-view {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* الـ file view code block — يبقى scroll أفقي جواها بس */
+    app-file-view pre,
+    app-file-view .fv-body {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        font-size: 11px !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+     PREVIEW SHELL — Responsive core, scroll only for tables
+     ═══════════════════════════════════════════════════════════ */
+
+    app-preview-shell,
+    app-preview-shell > * {
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+
+    /* الـ shell نفسه مش بيعمل scroll أفقي */
+    app-preview-shell .shell {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* الـ stage body — vertical فقط، الجداول هي اللي بتعمل scroll */
+    app-preview-shell .stage-body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        padding: 16px !important;
+    }
+
+    /* الـ .view (المحتوى الرئيسي) — responsive */
+    app-preview-shell .view {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* ─── الـ GRIDS تتحول لعمود واحد ─── */
+    app-preview-shell .kpis,
+    app-preview-shell .stat-grid,
+    app-preview-shell .resource-kpis,
+    app-preview-shell .zone-stats-row,
+    app-preview-shell .report-kpis,
+    app-preview-shell .dv-stats,
+    app-preview-shell .sec-stats,
+    app-preview-shell .grid-2,
+    app-preview-shell .grid-3,
+    app-preview-shell .om-grid,
+    app-preview-shell .sm-grid,
+    app-preview-shell .sc-stats,
+    app-preview-shell .dc-stats {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* الاستثناء: بعض الـ grids تفضل عمودين */
+    app-preview-shell .kpis,
+    app-preview-shell .stat-grid,
+    app-preview-shell .resource-kpis,
+    app-preview-shell .report-kpis,
+    app-preview-shell .dv-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* ─── CARDS ─── */
+    app-preview-shell .hero-card,
+    app-preview-shell .chart-card,
+    app-preview-shell .info-card,
+    app-preview-shell .live-feed,
+    app-preview-shell .sectors-preview,
+    app-preview-shell .activity-timeline,
+    app-preview-shell .timeline-section,
+    app-preview-shell .batches-section,
+    app-preview-shell .db-group,
+    app-preview-shell .endpoint-group,
+    app-preview-shell .feature-block {
+        padding: 16px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* ─── CARD GRIDS تتحول لعمود واحد ─── */
+    app-preview-shell .card-grid,
+    app-preview-shell .classifieds,
+    app-preview-shell .ops-card-grid,
+    app-preview-shell .soldier-grid,
+    app-preview-shell .unit-grid,
+    app-preview-shell .training-grid,
+    app-preview-shell .resource-grid,
+    app-preview-shell .zone-grid,
+    app-preview-shell .sector-grid,
+    app-preview-shell .sec-grid,
+    app-preview-shell .db-grid,
+    app-preview-shell .fm-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* ─── الجداول: دي الحاجة الوحيدة اللي بتعمل scroll أفقي ─── */
+    app-preview-shell .table-wrap,
+    app-preview-shell .endpoint-table,
+    app-preview-shell .res-table,
+    app-preview-shell .hist-table,
+    app-preview-shell .reg-table,
+    app-preview-shell .admin-table,
+    app-preview-shell .batch-list,
+    app-preview-shell .sector-chart {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        border-radius: var(--r-md);
+    }
+
+    /* الـ table cells تحتفظ بعرضها */
+    app-preview-shell .thead,
+    app-preview-shell .trow {
+        min-width: 720px;
+    }
+
+    app-preview-shell .ep-head,
+    app-preview-shell .ep-row {
+        min-width: 900px;
+    }
+
+    app-preview-shell .at-head,
+    app-preview-shell .at-row {
+        min-width: 600px;
+    }
+
+    app-preview-shell .hr-row,
+    app-preview-shell .pt-row,
+    app-preview-shell .bq-row {
+        min-width: 560px;
+    }
+
+    /* الـ scrollbar الأفقي */
+    app-preview-shell .table-wrap::-webkit-scrollbar,
+    app-preview-shell .endpoint-table::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    app-preview-shell .table-wrap::-webkit-scrollbar-thumb,
+    app-preview-shell .endpoint-table::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 3px;
+        border: 0;
+    }
+
+    /* ─── NAV الـ preview يتحول لـ horizontal pills ─── */
+    app-preview-shell .nav {
+        position: sticky !important;
+        top: 0;
+        z-index: 15;
+        height: auto !important;
+        flex-direction: row !important;
+        align-items: center;
+        border-right: 0 !important;
+        border-bottom: 0.5px solid var(--separator);
+        padding: 8px 4px !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        background: var(--bg-chrome);
+        backdrop-filter: blur(40px) saturate(180%);
+    }
+
+    app-preview-shell .nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    app-preview-shell .nav-brand {
+        flex-shrink: 0;
+        min-height: 40px !important;
+        padding: 6px 10px !important;
+        border-bottom: 0 !important;
+        border-right: 0.5px solid var(--separator);
+        flex-direction: row !important;
+        gap: 8px !important;
+    }
+
+    app-preview-shell .brand-mark {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 14px !important;
+    }
+
+    app-preview-shell .collapse-btn {
+        display: none !important;
+    }
+
+    app-preview-shell .nav-items {
+        flex-direction: row !important;
+        flex: none !important;
+        padding: 0 6px !important;
+        gap: 4px !important;
+        overflow: visible !important;
+    }
+
+    app-preview-shell .nav-group-label {
+        display: none !important;
+    }
+
+    app-preview-shell .nav-item {
+        flex-shrink: 0 !important;
+        padding: 6px 12px !important;
+        border-radius: 999px !important;
+        font-size: 11px !important;
+        gap: 6px !important;
+        background: var(--bg-fill-2) !important;
+    }
+
+    app-preview-shell .nav-item.active {
+        background: var(--accent) !important;
+        color: var(--accent-contrast) !important;
+    }
+
+    app-preview-shell .nav-item.active::before {
+        display: none;
+    }
+    app-preview-shell .nav-foot {
+        display: none !important;
+    }
+
+    /* ─── Stage bar ─── */
+    app-preview-shell .stage {
+        grid-template-rows: 52px minmax(0, 1fr) !important;
+    }
+
+    app-preview-shell .stage-bar {
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+
+    app-preview-shell .crumbs {
+        font-size: 11px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 120px;
+    }
+
+    app-preview-shell .stage-search {
+        max-width: none !important;
+        height: 30px !important;
+        min-width: 100px;
+    }
+
+    app-preview-shell .stage-search input {
+        font-size: 11px !important;
+    }
+    app-preview-shell .search-kbd {
+        display: none !important;
+    }
+
+    app-preview-shell .tb-btn {
+        padding: 5px 8px !important;
+    }
+    app-preview-shell .tb-label {
+        display: none !important;
+    }
+    app-preview-shell .divider {
+        margin: 0 2px !important;
+    }
+
+    app-preview-shell .icon-btn,
+    app-preview-shell .user-btn {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 13px !important;
+    }
+
+    app-preview-shell .user-av {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 10px !important;
+    }
+
+    app-preview-shell .wc {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    app-preview-shell .wc svg {
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    app-preview-shell .notif-drop {
+        right: 8px !important;
+        left: 8px !important;
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    app-preview-shell .user-drop {
+        right: 8px !important;
+        width: 260px !important;
+    }
+
+    /* ─── KPI والبطاقات الصغيرة ─── */
+    app-preview-shell .kpi,
+    app-preview-shell .stat-card,
+    app-preview-shell .report-kpi,
+    app-preview-shell .res-kpi,
+    app-preview-shell .dv-stat,
+    app-preview-shell .sec-stat,
+    app-preview-shell .dvs {
+        padding: 14px !important;
+        min-width: 0 !important;
+    }
+
+    app-preview-shell .kpi-val,
+    app-preview-shell .stat-val,
+    app-preview-shell .rk-val {
+        font-size: 22px !important;
+    }
+
+    /* ─── الـ modals ─── */
+    app-preview-shell .modal-backdrop {
+        padding: 12px !important;
+    }
+
+    app-preview-shell .modal {
+        max-width: 100% !important;
+        max-height: 92vh !important;
+        border-radius: var(--r-lg) !important;
+    }
+
+    app-preview-shell .modal-head {
+        padding: 16px !important;
+        gap: 10px !important;
+        flex-wrap: wrap;
+    }
+
+    app-preview-shell .modal-head h3 {
+        font-size: 16px !important;
+    }
+
+    app-preview-shell .modal-body {
+        padding: 16px !important;
+        min-width: 0 !important;
+    }
+
+    /* ─── الـ dummy data editor ─── */
+    app-dummy-data-editor {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    app-dummy-data-editor .dde-banner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 10px !important;
+        padding: 12px !important;
+    }
+
+    app-dummy-data-editor .dde-toggle {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    app-dummy-data-editor .dde-row {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+    }
+
+    app-dummy-data-editor .dde-table {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ─── الـ filters sticky ─── */
+    app-preview-shell .filter-tabs,
+    app-preview-shell .filter-bar,
+    app-preview-shell .filter-row,
+    app-preview-shell .chip-filters,
+    app-preview-shell .view-head {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    app-preview-shell .view-head {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    app-preview-shell .view-head h3 {
+        font-size: 20px !important;
+    }
+    app-preview-shell .view-head p {
+        font-size: 12px !important;
+    }
+
+    /* ─── الـ hero cards ─── */
+    app-preview-shell .hero-content h1 {
+        font-size: 32px !important;
+    }
+    app-preview-shell .hero-lede {
+        font-size: 13px !important;
+    }
+    app-preview-shell .hero-cta {
+        width: 100% !important;
+    }
+    app-preview-shell .hero-cta .pill {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    app-preview-shell .hero-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    app-preview-shell .hs b {
+        font-size: 22px !important;
+    }
+
+    /* ─── Charts ─── */
+    app-preview-shell .chart-bars {
+        min-width: 540px;
+        overflow-x: auto;
+    }
+
+    /* ─── الـ timeline ─── */
+    app-preview-shell .timeline-item {
+        grid-template-columns: 60px 16px 1fr !important;
+        gap: 8px !important;
+    }
+
+    /* ─── الـ tabs في الـ detail view ─── */
+    app-preview-shell .dv-tabs,
+    app-preview-shell .soldier-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap !important;
+        scrollbar-width: none;
+    }
+
+    app-preview-shell .dv-tabs::-webkit-scrollbar,
+    app-preview-shell .soldier-tabs::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* ─────────── VERY SMALL PHONES ─────────── */
+@media (max-width: 380px) {
+    .wv {
+        padding: 16px 12px 32px !important;
+    }
+
+    .wv h1 {
+        font-size: clamp(24px, 8vw, 32px) !important;
+    }
+
+    .wv .hero-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    .wv .stat b {
+        font-size: 22px !important;
+    }
+
+    app-preview-shell .stage-body {
+        padding: 12px !important;
+    }
+
+    app-preview-shell .kpis,
+    app-preview-shell .stat-grid,
+    app-preview-shell .resource-kpis,
+    app-preview-shell .report-kpis {
+        grid-template-columns: 1fr !important;
     }
 }

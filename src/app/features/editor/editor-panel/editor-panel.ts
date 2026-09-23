@@ -43,19 +43,32 @@ import { WelcomeViewComponent } from '../views/welcome-view/welcome-view';
     </div>
   `,
   styles: [`
-    :host { display: block; height: 100%; overflow: hidden; }
+    :host {
+      display: block;
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .ep {
       height: 100%;
+      min-height: 0;
       overflow-y: auto;
       overflow-x: hidden;
       background: var(--bg-root);
       scroll-behavior: smooth;
     }
+
     .no-demo {
       height: 100%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
+      padding: 40px;
     }
+
     .no-demo span { font-size: 48px; opacity: 0.4; }
     .no-demo b { font-size: var(--fs-lg); font-weight: 700; }
     .no-demo small { font-size: var(--fs-sm); color: var(--label-2); }

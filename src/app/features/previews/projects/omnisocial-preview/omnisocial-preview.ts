@@ -23,9 +23,6 @@ import { PreviewShellComponent, PreviewNavItem, ToolbarAction, PreviewNotificati
       [toolbarActions]="toolbar()"
       [notifications]="notifs()"
       [searchPlaceholder]="searchPlaceholder()"
-      (searchChange)="onSearch($event)"
-      (closeRequest)="onClose()"
-      (notifOpenRequest)="onNotifClick($event)"
     >
       @if (active() === 'flows') {
         <app-flows-panel projectId="omnisocial" />

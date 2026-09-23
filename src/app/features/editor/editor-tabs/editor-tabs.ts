@@ -117,6 +117,31 @@ import { ProjectsService } from '../../../core/services/projects.service';
     .crumb { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .crumb.last { color: var(--label); font-weight: 600; }
     .crumb-sep { color: var(--label-4); flex-shrink: 0; }
+
+@media (max-width: 720px) {
+  .tabs-wrap {
+    height: 40px !important;
+    padding: 4px 8px !important;
+  }
+
+  .tabs {
+    max-width: 100% !important;
+  }
+
+  .tab {
+    height: 28px !important;
+    padding: 0 8px 0 10px !important;
+    font-size: 11px !important;
+  }
+
+  .tab-title {
+    max-width: 100px !important;
+  }
+
+  .breadcrumbs {
+    display: none !important;
+  }
+}
   `],
 })
 export class EditorTabsComponent {

@@ -20,6 +20,7 @@ interface Job {
       subtitle="Job platform"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       @if (active() === 'jobs') {
         <div class="jobs">

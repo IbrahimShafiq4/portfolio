@@ -16,6 +16,7 @@ interface List { id: string; title: string; icon: string; }
       subtitle="Project management"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions class="board-actions">
         <span class="member-stack">

@@ -20,6 +20,7 @@ interface CartLine { product: Product; qty: number; }
       subtitle="Modern e-commerce"
       [nav]="nav"
       [active]="active()"
+      (activeChange)="active.set($any($event))"
     >
       <div actions>
         @if (cartCount() > 0) {
