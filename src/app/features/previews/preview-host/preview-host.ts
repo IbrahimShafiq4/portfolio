@@ -7,6 +7,7 @@ import { AzAccountingPreviewComponent } from '../projects/az-accounting-preview/
 import { BoxShadowPreviewComponent } from '../projects/boxshadow-preview/boxshadow-preview';
 import { BusinessStepPreviewComponent } from '../projects/business-step-preview/business-step-preview';
 import { BwtPreviewComponent } from '../projects/bwt-preview/bwt-preview';
+import { CreatorHubPreviewComponent } from '../projects/creatorhub-preview/creatorhub-preview';
 import { EnlistedPreviewComponent } from '../projects/enlisted-preview/enlisted-preview';
 import { EnnwyPreviewComponent } from '../projects/ennwy-preview/ennwy-preview';
 import { FoodyPreviewComponent } from '../projects/foody-preview/foody-preview';
@@ -22,7 +23,6 @@ import { SectorReportsPreviewComponent } from '../projects/sector-reports-previe
 import { TaskFlowPreviewComponent } from '../projects/taskflow-preview/taskflow-preview';
 import { TransferOrdersPreviewComponent } from '../projects/transfer-orders-preview/transfer-orders-preview';
 import { WeatherPreviewComponent } from '../projects/weather-preview/weather-preview';
-import { CreatorHubPreviewComponent } from '../projects/creatorhub-preview/creatorhub-preview';
 
 @Component({
   selector: 'app-preview-host',

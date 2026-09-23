@@ -978,7 +978,21 @@ export class PreviewShellComponent {
 
   readonly allToolbarActions = computed(() => {
     const custom = this.toolbarActions();
-    return [...custom, ...this.defaultToolbar()];
+    const defaults = this.defaultToolbar();
+    const seen = new Set<string>();
+    const result: ToolbarAction[] = [];
+
+    for (const a of [...custom, ...defaults]) {
+      let id = a.id;
+      let counter = 1;
+      while (seen.has(id)) {
+        id = `${a.id}-${counter++}`;
+      }
+      seen.add(id);
+      result.push(id === a.id ? a : { ...a, id });
+    }
+
+    return result;
   });
 
   toggleCollapsed(): void {
@@ -1000,13 +1014,19 @@ export class PreviewShellComponent {
     this.menu.open(window.innerWidth / 2 - 120, 100, [
       { id: 'k1', label: '⌘B — Toggle sidebar', icon: '⌨', action: () => this.toggleCollapsed() },
       { id: 'k2', label: '⌘F — Focus search', icon: '⌨', action: () => this.focusSearch() },
-      { id: 'k3', label: '⌘K — Command palette', icon: '⌨',
-        action: () => this.toast.info('Command palette', 'Press ⌘K from the app') },
-      { id: 'k4', label: 'Esc — Close overlays', icon: '⌨',
-        action: () => this.closeDropdowns() },
-      { id: 'sep', label: '', separatorBefore: true, action: () => {} },
-      { id: 'docs', label: 'View full docs', icon: '📖',
-        action: () => this.toast.info('Docs', 'Full documentation coming soon') },
+      {
+        id: 'k3', label: '⌘K — Command palette', icon: '⌨',
+        action: () => this.toast.info('Command palette', 'Press ⌘K from the app')
+      },
+      {
+        id: 'k4', label: 'Esc — Close overlays', icon: '⌨',
+        action: () => this.closeDropdowns()
+      },
+      { id: 'sep', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'docs', label: 'View full docs', icon: '📖',
+        action: () => this.toast.info('Docs', 'Full documentation coming soon')
+      },
     ]);
   }
 
@@ -1038,7 +1058,7 @@ export class PreviewShellComponent {
     this.layout.maximizePreview();
     const state = this.layout.previewState();
     this.toast.success(state === 'maximized' ? 'Maximized' : 'Restored',
-                        state === 'maximized' ? 'Fullscreen mode' : 'Normal size', '⛶');
+      state === 'maximized' ? 'Fullscreen mode' : 'Normal size', '⛶');
   }
 
   onNavClick(item: PreviewNavItem): void {
@@ -1118,23 +1138,37 @@ export class PreviewShellComponent {
     ev.stopPropagation();
     const items = [
       { id: 'open', label: 'Open', icon: '📂', action: () => this.onNavClick(item) },
-      { id: 'open-new', label: 'Open in new tab', icon: '➕',
-        action: () => this.toast.info(`Opened "${item.label}" in new tab`) },
-      { id: 'sep-1', label: '', separatorBefore: true, action: () => {} },
-      { id: 'pin', label: 'Pin to sidebar', icon: '📌',
-        action: () => this.toast.success(`Pinned "${item.label}"`) },
-      { id: 'rename', label: 'Rename…', icon: '✎',
-        action: () => this.toast.info(`Renaming "${item.label}"`) },
-      { id: 'duplicate', label: 'Duplicate', icon: '⧉',
-        action: () => this.toast.success(`Duplicated "${item.label}"`) },
-      { id: 'sep-2', label: '', separatorBefore: true, action: () => {} },
-      { id: 'collapse', label: this.collapsed() ? 'Expand sidebar' : 'Collapse sidebar',
-        icon: '⇤', shortcut: '⌘B', action: () => this.toggleCollapsed() },
-      { id: 'sep-3', label: '', separatorBefore: true, action: () => {} },
-      { id: 'export', label: 'Export as JSON', icon: '📤',
-        action: () => this.toast.success(`Exported "${item.label}"`) },
-      { id: 'delete', label: 'Remove', icon: '🗑', danger: true,
-        action: () => this.toast.warning(`Removed "${item.label}"`) },
+      {
+        id: 'open-new', label: 'Open in new tab', icon: '➕',
+        action: () => this.toast.info(`Opened "${item.label}" in new tab`)
+      },
+      { id: 'sep-1', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'pin', label: 'Pin to sidebar', icon: '📌',
+        action: () => this.toast.success(`Pinned "${item.label}"`)
+      },
+      {
+        id: 'rename', label: 'Rename…', icon: '✎',
+        action: () => this.toast.info(`Renaming "${item.label}"`)
+      },
+      {
+        id: 'duplicate', label: 'Duplicate', icon: '⧉',
+        action: () => this.toast.success(`Duplicated "${item.label}"`)
+      },
+      { id: 'sep-2', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'collapse', label: this.collapsed() ? 'Expand sidebar' : 'Collapse sidebar',
+        icon: '⇤', shortcut: '⌘B', action: () => this.toggleCollapsed()
+      },
+      { id: 'sep-3', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'export', label: 'Export as JSON', icon: '📤',
+        action: () => this.toast.success(`Exported "${item.label}"`)
+      },
+      {
+        id: 'delete', label: 'Remove', icon: '🗑', danger: true,
+        action: () => this.toast.warning(`Removed "${item.label}"`)
+      },
     ];
     this.menu.open(ev.clientX, ev.clientY, items, item.id);
   }
@@ -1143,35 +1177,55 @@ export class PreviewShellComponent {
     ev.preventDefault();
     ev.stopPropagation();
     this.menu.open(ev.clientX, ev.clientY, [
-      { id: 'home', label: 'Go home', icon: '🏠',
-        action: () => this.goHome() },
-      { id: 'collapse', label: this.collapsed() ? 'Expand sidebar' : 'Collapse sidebar',
-        icon: '⇤', shortcut: '⌘B', action: () => this.toggleCollapsed() },
-      { id: 'search', label: 'Focus search', icon: '🔍', shortcut: '⌘F',
-        action: () => this.focusSearch() },
-      { id: 'sep-1', label: '', separatorBefore: true, action: () => {} },
-      { id: 'reload', label: 'Reload preview', icon: '⟳', shortcut: '⌘R',
-        action: () => { window.location.reload(); } },
+      {
+        id: 'home', label: 'Go home', icon: '🏠',
+        action: () => this.goHome()
+      },
+      {
+        id: 'collapse', label: this.collapsed() ? 'Expand sidebar' : 'Collapse sidebar',
+        icon: '⇤', shortcut: '⌘B', action: () => this.toggleCollapsed()
+      },
+      {
+        id: 'search', label: 'Focus search', icon: '🔍', shortcut: '⌘F',
+        action: () => this.focusSearch()
+      },
+      { id: 'sep-1', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'reload', label: 'Reload preview', icon: '⟳', shortcut: '⌘R',
+        action: () => { window.location.reload(); }
+      },
       { id: 'max', label: 'Maximize', icon: '⛶', action: () => this.maximize() },
       { id: 'min', label: 'Minimize', icon: '⊟', action: () => this.minimize() },
-      { id: 'sep-2', label: '', separatorBefore: true, action: () => {} },
-      { id: 'theme', label: 'Cycle theme', icon: '🎨',
-        action: () => { this.theme.cycle(); this.toast.success('Theme: ' + this.theme.active().label); } },
-      { id: 'terminal', label: 'Toggle terminal', icon: '⌨', shortcut: '⌘`',
-        action: () => this.layout.toggleTerminal() },
-      { id: 'sep-3', label: '', separatorBefore: true, action: () => {} },
-      { id: 'inspect', label: 'Inspect element', icon: '🔍',
-        action: () => this.toast.info('DevTools inspection mode') },
-      { id: 'copy-link', label: 'Copy link', icon: '🔗',
+      { id: 'sep-2', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'theme', label: 'Cycle theme', icon: '🎨',
+        action: () => { this.theme.cycle(); this.toast.success('Theme: ' + this.theme.active().label); }
+      },
+      {
+        id: 'terminal', label: 'Toggle terminal', icon: '⌨', shortcut: '⌘`',
+        action: () => this.layout.toggleTerminal()
+      },
+      { id: 'sep-3', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'inspect', label: 'Inspect element', icon: '🔍',
+        action: () => this.toast.info('DevTools inspection mode')
+      },
+      {
+        id: 'copy-link', label: 'Copy link', icon: '🔗',
         action: () => {
           navigator.clipboard?.writeText(window.location.href);
           this.toast.success('Link copied');
-        } },
-      { id: 'print', label: 'Print view', icon: '🖨', shortcut: '⌘P',
-        action: () => window.print() },
-      { id: 'sep-4', label: '', separatorBefore: true, action: () => {} },
-      { id: 'close', label: 'Close preview', icon: '✕', danger: true,
-        action: () => this.onClose() },
+        }
+      },
+      {
+        id: 'print', label: 'Print view', icon: '🖨', shortcut: '⌘P',
+        action: () => window.print()
+      },
+      { id: 'sep-4', label: '', separatorBefore: true, action: () => { } },
+      {
+        id: 'close', label: 'Close preview', icon: '✕', danger: true,
+        action: () => this.onClose()
+      },
     ]);
   }
 

@@ -1969,3 +1969,38 @@ html[data-view="recruiter"] .rv::before {
         grid-template-columns: 1fr !important;
     }
 }
+
+[data-accent="blue"] {
+    --accent: #007aff;
+    --accent-soft: rgba(0, 122, 255, 0.16);
+    --accent-hover: #0066d6;
+    --accent-contrast: #ffffff;
+}
+
+[data-accent="purple"] {
+    --accent: #af52de;
+    --accent-soft: rgba(175, 82, 222, 0.18);
+    --accent-hover: #9a3fc8;
+    --accent-contrast: #ffffff;
+}
+
+[data-accent="pink"] {
+    --accent: #ff2d55;
+    --accent-soft: rgba(255, 45, 85, 0.16);
+    --accent-hover: #e0264a;
+    --accent-contrast: #ffffff;
+}
+
+[data-accent="orange"] {
+    --accent: #ff9500;
+    --accent-soft: rgba(255, 149, 0, 0.18);
+    --accent-hover: #e08600;
+    --accent-contrast: #ffffff;
+}
+
+[data-accent="green"] {
+    --accent: #34c759;
+    --accent-soft: rgba(52, 199, 89, 0.18);
+    --accent-hover: #2eb14e;
+    --accent-contrast: #ffffff;
+}
