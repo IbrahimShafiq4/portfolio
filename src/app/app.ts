@@ -52,6 +52,9 @@ import { CommandPalette } from './features/shell/command-palette/command-palette
         <!-- ══════════════ MOBILE SHELL ══════════════ -->
         <main class="mobile-editor">
           <app-editor-panel />
+          @if (layout.terminalOpen()) {
+            <app-terminal />
+          }
         </main>
 
         <app-mobile-tab-bar />
@@ -116,14 +119,35 @@ import { CommandPalette } from './features/shell/command-palette/command-palette
       display: none;
     }
 
+    /* ═══════════════ MOBILE EDITOR ═══════════════ */
     .mobile-editor {
       overflow: hidden;
       background: var(--bg-root);
       padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
       min-height: 0;
       display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
     }
 
+    .mobile-editor > app-editor-panel {
+      display: block;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .mobile-editor > app-terminal {
+      display: block;
+      min-height: 0;
+      max-height: 40vh;
+      animation: termSlideUp 260ms var(--ease-spring);
+    }
+
+    @keyframes termSlideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* ═══════════════ RECRUITER ═══════════════ */
     .app[data-view='recruiter'] {
       grid-template-rows: var(--h-titlebar) minmax(0, 1fr);
     }
@@ -132,6 +156,7 @@ import { CommandPalette } from './features/shell/command-palette/command-palette
       display: none;
     }
 
+    /* ═══════════════ DESKTOP / TABLET ═══════════════ */
     .body {
       display: grid;
       grid-template-columns: var(--w-activitybar) var(--w-sidebar) minmax(0, 1fr);
@@ -199,7 +224,6 @@ export class AppComponent {
   @HostListener('document:keydown', ['$event'])
   onKey(ev: KeyboardEvent): void {
     const meta = ev.ctrlKey || ev.metaKey;
-
 
     // ⌘⇧V — Toggle view mode
     if (meta && ev.shiftKey && ev.key.toLowerCase() === 'v') {

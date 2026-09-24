@@ -35,7 +35,7 @@ import { ProjectsService } from '../../../../core/services/projects.service';
           <span class="meta-block">ANGULAR · .NET</span>
         </div>
 
-        <p class="masthead-arabic" dir="rtl">مبرمج ويب متكامل · القاهرة · مصر</p>
+        <p class="masthead-arabic" dir="rtl">Fullstack Engineer [ Angular | .Net ] -- Egypt, Cairo</p>
       </header>
 
       <div class="rv-rule">

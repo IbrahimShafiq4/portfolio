@@ -15,7 +15,7 @@ import { ThemeService } from '../../core/services/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { '[attr.data-ctx]': '"terminal"' },
   template: `
-    <div class="term" [style.height.px]="layout.terminalHeight()">
+    <div class="term" [style.height.px]="layout.isMobile() ? null : layout.terminalHeight()">
       <header class="term-bar">
         <div class="tabs">
           <button class="tab active">
@@ -65,11 +65,14 @@ import { ThemeService } from '../../core/services/theme.service';
         />
       </div>
 
-      <div class="resize-handle" (mousedown)="startResize($event)"></div>
+      @if (!layout.isMobile()) {
+        <div class="resize-handle" (mousedown)="startResize($event)"></div>
+      }
     </div>
   `,
   styles: [`
     :host { display: block; }
+
     .term {
       display: flex;
       flex-direction: column;
@@ -82,11 +85,14 @@ import { ThemeService } from '../../core/services/theme.service';
       position: relative;
       min-height: 140px;
       animation: termIn 260ms var(--ease-spring);
+      overflow: hidden;
     }
+
     @keyframes termIn {
       from { transform: translateY(12px); opacity: 0.6; }
-      to   { transform: translateY(0); opacity: 1; }
+      to   { transform: translateY(0);    opacity: 1; }
     }
+
     .term-bar {
       display: flex; justify-content: space-between; align-items: center;
       height: 34px; padding: 0 8px;
@@ -94,7 +100,9 @@ import { ThemeService } from '../../core/services/theme.service';
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
       flex-shrink: 0;
     }
+
     .tabs { display: flex; gap: 2px; }
+
     .tab {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px;
@@ -102,38 +110,60 @@ import { ThemeService } from '../../core/services/theme.service';
       font-size: 11.5px;
       font-family: var(--sf);
       color: rgba(255, 255, 255, 0.65);
+      background: transparent;
+      border: 0;
+      cursor: default;
     }
+
     .tab.active { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.95); }
+
     .dot-status {
       width: 7px; height: 7px; border-radius: 50%;
       background: #34c759;
       box-shadow: 0 0 0 2px rgba(52, 199, 89, 0.15);
     }
+
     .actions { display: flex; gap: 2px; }
+
     .icon-btn {
       width: 26px; height: 26px;
       display: grid; place-items: center;
       border-radius: var(--r-xs);
       font-size: 13px;
       color: rgba(255, 255, 255, 0.55);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
       transition: all var(--t-fast) var(--ease-smooth);
     }
+
     .icon-btn:hover { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.9); }
-    .term-body { flex: 1; overflow-y: auto; padding: 10px 14px 4px; scroll-behavior: smooth; }
+
+    .term-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 14px 4px;
+      scroll-behavior: smooth;
+      min-height: 0;
+    }
+
     .line {
       white-space: pre-wrap;
       word-break: break-word;
       animation: lineIn 160ms var(--ease-out);
     }
+
     @keyframes lineIn {
       from { opacity: 0; transform: translateY(2px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
     .line.input   { color: #7ec699; }
     .line.output  { color: var(--bg-terminal-text); }
     .line.error   { color: #ff7b72; }
     .line.success { color: #7ee787; }
     .line.muted   { color: rgba(255, 255, 255, 0.42); }
+
     .suggestions {
       display: flex;
       flex-wrap: wrap;
@@ -142,11 +172,14 @@ import { ThemeService } from '../../core/services/theme.service';
       background: rgba(255, 255, 255, 0.02);
       border-top: 0.5px solid rgba(255, 255, 255, 0.06);
       animation: slideUp 180ms var(--ease-spring);
+      flex-shrink: 0;
     }
+
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(4px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
     .suggestion {
       display: inline-flex;
       align-items: center;
@@ -157,20 +190,28 @@ import { ThemeService } from '../../core/services/theme.service';
       border-radius: var(--r-pill);
       font-size: 11px;
       font-family: var(--sf-mono);
+      border: 0;
+      cursor: pointer;
       transition: all var(--t-fast);
     }
-    .suggestion:hover, .suggestion.active {
+
+    .suggestion:hover,
+    .suggestion.active {
       background: var(--accent);
       color: var(--accent-contrast);
     }
+
     .s-icon { font-size: 11px; }
+
     .term-input {
       display: flex; align-items: center; gap: 8px;
       padding: 8px 14px 12px;
       flex-shrink: 0;
       border-top: 0.5px solid rgba(255, 255, 255, 0.04);
     }
+
     .prompt { color: #7ec699; flex-shrink: 0; }
+
     .term-input input {
       flex: 1;
       background: transparent;
@@ -180,8 +221,11 @@ import { ThemeService } from '../../core/services/theme.service';
       font-family: inherit;
       font-size: inherit;
       caret-color: #7ec699;
+      min-width: 0;
     }
+
     .term-input input::placeholder { color: rgba(255, 255, 255, 0.28); }
+
     .resize-handle {
       position: absolute;
       top: -3px; left: 0; right: 0;
@@ -189,7 +233,92 @@ import { ThemeService } from '../../core/services/theme.service';
       cursor: ns-resize;
       z-index: 10;
     }
+
     .resize-handle:hover { background: var(--accent); opacity: 0.35; }
+
+    /* ═══════════════════════════════════════════════════════
+       MOBILE — Compact terminal
+       ═══════════════════════════════════════════════════════ */
+    @media (max-width: 720px) {
+      .term {
+        max-height: 40vh !important;
+        height: auto !important;
+        font-size: 11.5px;
+      }
+
+      .term-bar {
+        height: 30px;
+        padding: 0 6px;
+      }
+
+      .tab {
+        padding: 4px 10px;
+        font-size: 11px;
+        gap: 5px;
+      }
+
+      .dot-status {
+        width: 6px;
+        height: 6px;
+      }
+
+      .icon-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .term-body {
+        padding: 8px 12px 2px;
+      }
+
+      .line {
+        font-size: 11.5px;
+        line-height: 1.5;
+      }
+
+      .suggestions {
+        padding: 6px 10px;
+        gap: 3px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .suggestions::-webkit-scrollbar { display: none; }
+
+      .suggestion {
+        flex-shrink: 0;
+        padding: 3px 8px;
+        font-size: 10px;
+      }
+
+      .term-input {
+        padding: 6px 12px 10px;
+        gap: 6px;
+      }
+
+      .term-input input {
+        font-size: 12px;
+      }
+
+      .term-input input::placeholder {
+        font-size: 11px;
+      }
+
+      .resize-handle {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .term { font-size: 11px; max-height: 40vh !important; }
+      .line { font-size: 11px; }
+      .term-body { padding: 6px 10px 2px; }
+      .term-input { padding: 6px 10px 8px; }
+      .term-input input { font-size: 11px; }
+      .prompt { font-size: 11px; }
+    }
   `],
 })
 export class TerminalComponent implements AfterViewInit {
@@ -293,6 +422,8 @@ export class TerminalComponent implements AfterViewInit {
   }
 
   startResize(ev: MouseEvent): void {
+    if (this.layout.isMobile()) return;
+
     ev.preventDefault();
     this.resizing = true;
     const startY = ev.clientY;

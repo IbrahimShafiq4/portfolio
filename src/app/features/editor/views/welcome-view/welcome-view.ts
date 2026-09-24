@@ -585,7 +585,7 @@ import { LayoutService } from '../../../../core/services/layout.service';
 
     /* ====== INDEX TABLE ====== */
     .index-tabs { display: flex; gap: 4px; padding: 4px; background: var(--bg-fill-2);
-                  border-radius: var(--r-sm); }
+                  border-radius: var(--r-sm); flex-wrap: wrap; }
     .idx-tab {
       padding: 7px 14px;
       border-radius: calc(var(--r-sm) - 4px);

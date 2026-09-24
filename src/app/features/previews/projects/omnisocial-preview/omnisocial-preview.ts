@@ -6,11 +6,12 @@ import { getFlowsFor } from '../../../../data/flows';
 import { TOTAL_CONTROLLERS, TOTAL_ENDPOINTS, OMNISOCIAL_FEATURES, OsController, OMNISOCIAL_CONTROLLERS, OsEndpoint } from '../../../../data/omnisocial/omnisocial-endpoints.data';
 import { FlowsPanelComponent } from '../../shared/flows-panel/flows-panel';
 import { PreviewShellComponent, PreviewNavItem, ToolbarAction, PreviewNotification } from '../../shared/preview-shell/preview-shell';
+import { OmniSocialDemoComponent } from './omnisocial-demo/omnisocial-demo';
 
 @Component({
   selector: 'app-omnisocial-preview',
   standalone: true,
-  imports: [PreviewShellComponent, FormsModule, FlowsPanelComponent],
+  imports: [PreviewShellComponent, FormsModule, FlowsPanelComponent, OmniSocialDemoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-preview-shell
@@ -24,6 +25,9 @@ import { PreviewShellComponent, PreviewNavItem, ToolbarAction, PreviewNotificati
       [notifications]="notifs()"
       [searchPlaceholder]="searchPlaceholder()"
     >
+      @if (active() === 'app' || active() === 'stories' || active() === 'reels') {
+        <app-omnisocial-demo />
+      }
       @if (active() === 'flows') {
         <app-flows-panel projectId="omnisocial" />
       }
@@ -1057,6 +1061,9 @@ export class OmniSocialPreviewComponent {
   readonly setupProgress = signal(0);
 
   readonly nav = computed<PreviewNavItem[]>(() => [
+    { id: 'app', label: 'App Demo', icon: '📱', group: 'Project' },
+    { id: 'stories', label: 'Stories', icon: '📸', group: 'Project' },
+    { id: 'reels', label: 'TikTok Feed', icon: '🎬', group: 'Project' },
     { id: 'overview', label: 'Overview', icon: '📋', group: 'Project' },
     { id: 'flows', label: 'Demo Flows', icon: '🎬', badge: getFlowsFor('omnisocial').length, group: 'Project' },
     { id: 'endpoints', label: 'Endpoints', icon: '🔌', badge: this.totalControllers, group: 'API' },

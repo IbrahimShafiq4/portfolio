@@ -115,11 +115,10 @@ export interface PreviewNotification {
           @if (searchPlaceholder()) {
             <div class="stage-search">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
-                   stroke-width="1.8" stroke-linecap="round">
+                  stroke-width="1.8" stroke-linecap="round">
                 <circle cx="9" cy="9" r="6" /><path d="m17 17-3.5-3.5" />
               </svg>
               <input
-                #searchInput
                 [placeholder]="searchPlaceholder()"
                 [ngModel]="searchQuery()"
                 (ngModelChange)="onSearch($event)"
@@ -160,7 +159,7 @@ export interface PreviewNotification {
               <span class="user-av">IS</span>
             </button>
 
-            <div class="divider"></div>
+            <div class="divider window-divider"></div>
 
             <div class="window-controls">
               <button class="wc minimize" (click)="minimize()" title="Minimize">
@@ -188,6 +187,7 @@ export interface PreviewNotification {
             </div>
           </div>
 
+          <!-- Notifications dropdown -->
           @if (notifOpen()) {
             <div class="dropdown notif-drop" (click)="$event.stopPropagation()">
               <header>
@@ -215,6 +215,7 @@ export interface PreviewNotification {
             </div>
           }
 
+          <!-- User menu dropdown -->
           @if (userMenuOpen()) {
             <div class="dropdown user-drop" (click)="$event.stopPropagation()">
               <div class="user-head">
@@ -226,54 +227,33 @@ export interface PreviewNotification {
               </div>
               <button class="menu-item" (click)="userAction('profile')">
                 <span class="mi-icon">👤</span>
-                <span class="mi-text">
-                  <b>Profile</b>
-                  <small>Open landing page</small>
-                </span>
+                <span class="mi-text"><b>Profile</b><small>Open landing page</small></span>
               </button>
               <button class="menu-item" (click)="userAction('cv')">
                 <span class="mi-icon">📄</span>
-                <span class="mi-text">
-                  <b>View CV</b>
-                  <small>Resume & experience</small>
-                </span>
+                <span class="mi-text"><b>View CV</b><small>Resume & experience</small></span>
               </button>
               <button class="menu-item" (click)="userAction('themes')">
                 <span class="mi-icon">🎨</span>
-                <span class="mi-text">
-                  <b>Themes & Appearance</b>
-                  <small>Color scheme & accent</small>
-                </span>
+                <span class="mi-text"><b>Themes</b><small>Color scheme</small></span>
               </button>
               <button class="menu-item" (click)="userAction('contact')">
                 <span class="mi-icon">✉️</span>
-                <span class="mi-text">
-                  <b>Contact</b>
-                  <small>Email, phone, LinkedIn</small>
-                </span>
+                <span class="mi-text"><b>Contact</b><small>Email, phone, LinkedIn</small></span>
               </button>
               <button class="menu-item" (click)="userAction('terminal')">
                 <span class="mi-icon">⌨️</span>
-                <span class="mi-text">
-                  <b>Open Terminal</b>
-                  <small>Run commands</small>
-                </span>
+                <span class="mi-text"><b>Terminal</b><small>Run commands</small></span>
               </button>
               <div class="menu-sep"></div>
               <button class="menu-item" (click)="userAction('themes-cycle')">
                 <span class="mi-icon">🎨</span>
-                <span class="mi-text">
-                  <b>Cycle Theme</b>
-                  <small>{{ theme.active().label }}</small>
-                </span>
+                <span class="mi-text"><b>Cycle Theme</b><small>{{ theme.active().label }}</small></span>
               </button>
               <div class="menu-sep"></div>
               <button class="menu-item danger" (click)="userAction('signout')">
                 <span class="mi-icon">🚪</span>
-                <span class="mi-text">
-                  <b>Sign out</b>
-                  <small>Clear session</small>
-                </span>
+                <span class="mi-text"><b>Sign out</b><small>Clear session</small></span>
               </button>
             </div>
           }
@@ -429,73 +409,82 @@ export interface PreviewNotification {
       display: grid; grid-template-rows: 56px 1fr;
       min-height: 0; overflow: hidden; position: relative;
     }
+
     .stage-bar {
-      display: flex; align-items: center; gap: 16px;
+      display: flex; align-items: center; gap: 12px;
       padding: 0 16px; background: var(--bg-chrome);
       backdrop-filter: var(--blur-thin);
       border-bottom: 0.5px solid var(--separator);
       position: relative; z-index: 20;
+      min-width: 0;
     }
+
     .crumbs {
-      display: flex; align-items: center; gap: 8px;
+      display: flex; align-items: center; gap: 6px;
       font-size: var(--fs-xs); color: var(--label-2);
       font-weight: 500; flex-shrink: 0;
+      min-width: 0; max-width: 40%;
     }
     .crumb-btn {
       background: transparent; border: 0; padding: 4px 6px;
       color: var(--label-2); font-size: var(--fs-xs); font-weight: 500;
       cursor: pointer; border-radius: var(--r-xs);
-      transition: background var(--t-fast), color var(--t-fast);
       font-family: inherit;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 140px;
     }
     .crumb-btn:hover { background: var(--bg-hover); color: var(--accent); }
-    .crumb-sep { color: var(--label-4); }
-    .crumb.active { color: var(--label); font-weight: 600; padding: 4px 6px; }
+    .crumb-sep { color: var(--label-4); flex-shrink: 0; }
+    .crumb.active {
+      color: var(--label); font-weight: 600; padding: 4px 6px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 140px;
+    }
 
     .stage-search {
-      flex: 1; max-width: 380px;
+      flex: 1; max-width: 380px; min-width: 0;
       display: flex; align-items: center; gap: 8px;
       padding: 0 12px; background: var(--bg-input);
       border-radius: var(--r-pill); height: 34px;
-      transition: box-shadow var(--t-fast);
     }
     .stage-search:focus-within { box-shadow: 0 0 0 2px var(--accent-soft); }
     .stage-search svg { width: 14px; height: 14px; color: var(--label-3); flex-shrink: 0; }
     .stage-search input {
       flex: 1; background: transparent; border: 0; outline: none;
       font-size: var(--fs-xs); color: var(--label); font-family: inherit;
+      min-width: 0;
     }
     .stage-search input::placeholder { color: var(--label-3); }
     .search-kbd {
       font-family: var(--sf-mono); font-size: 9px;
       padding: 2px 6px; background: var(--bg-fill-3);
       color: var(--label-3); border-radius: var(--r-xs);
-      font-weight: 700;
+      font-weight: 700; flex-shrink: 0;
     }
     .clear-search {
       width: 18px; height: 18px; display: grid; place-items: center;
       background: var(--bg-fill-3); color: var(--label-2);
       border-radius: 50%; font-size: 10px; cursor: pointer;
-      border: 0;
+      border: 0; flex-shrink: 0;
     }
-    .clear-search:hover { background: var(--bg-fill); color: var(--label); }
 
-    .stage-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+    .stage-actions {
+      display: flex; align-items: center; gap: 6px;
+      margin-left: auto; flex-shrink: 0;
+    }
+
     .tb-btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 7px 12px; border-radius: var(--r-sm);
       background: var(--bg-fill-2); color: var(--label);
       font-size: var(--fs-xs); font-weight: 600;
       cursor: pointer; border: 0;
-      transition: background var(--t-fast), transform var(--t-fast);
+      white-space: nowrap;
     }
     .tb-btn:hover { background: var(--bg-fill-3); }
-    .tb-btn:active { transform: scale(0.97); }
     .tb-btn.primary { background: var(--accent); color: var(--accent-contrast); }
     .tb-btn.primary:hover { background: var(--accent-hover); }
     .tb-icon { font-size: 13px; }
-    .tb-label { white-space: nowrap; }
-    @media (max-width: 1024px) { .tb-label { display: none; } .tb-btn { padding: 7px 10px; } }
 
     .divider { width: 1px; height: 20px; background: var(--separator); margin: 0 4px; }
 
@@ -504,7 +493,6 @@ export interface PreviewNotification {
       display: grid; place-items: center;
       border-radius: var(--r-sm); color: var(--label-2);
       cursor: pointer; background: transparent; border: 0;
-      transition: background var(--t-fast), color var(--t-fast);
       font-size: 15px;
     }
     .icon-btn:hover { background: var(--bg-hover); color: var(--label); }
@@ -522,7 +510,6 @@ export interface PreviewNotification {
       width: 34px; height: 34px; display: grid; place-items: center;
       border-radius: 50%; cursor: pointer;
       background: transparent; border: 0;
-      transition: background var(--t-fast);
     }
     .user-btn:hover, .user-btn.active { background: var(--bg-hover); }
     .user-av {
@@ -530,7 +517,6 @@ export interface PreviewNotification {
       display: grid; place-items: center;
       background: var(--accent); color: var(--accent-contrast);
       border-radius: 50%; font-size: 11px; font-weight: 800;
-      letter-spacing: 0.02em;
     }
 
     .window-controls {
@@ -541,7 +527,6 @@ export interface PreviewNotification {
       width: 28px; height: 28px; display: grid; place-items: center;
       border-radius: var(--r-xs); color: var(--label-2);
       cursor: pointer; background: transparent; border: 0;
-      transition: background var(--t-fast), color var(--t-fast);
     }
     .wc svg { width: 12px; height: 12px; }
     .wc:hover { background: var(--bg-hover); color: var(--label); }
@@ -653,15 +638,13 @@ export interface PreviewNotification {
       .search-kbd { display: none; }
     }
 
-    /* ─────────── MOBILE HORIZONTAL SCROLL ─────────── */
 @media (max-width: 720px) {
-
   .shell {
     grid-template-columns: 1fr !important;
-    min-width: 0;
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
-  /* الـ nav يبقى horizontal pills فوق */
   .nav {
     position: sticky;
     top: 0;
@@ -671,7 +654,7 @@ export interface PreviewNotification {
     align-items: center;
     border-right: 0 !important;
     border-bottom: 0.5px solid var(--separator);
-    padding: 8px 4px;
+    padding: 8px 4px !important;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -717,16 +700,15 @@ export interface PreviewNotification {
     font-size: 11px !important;
     gap: 6px !important;
     background: var(--bg-fill-2) !important;
-    border: 1px solid transparent !important;
   }
 
   .nav-item.active {
     background: var(--accent) !important;
     color: var(--accent-contrast) !important;
-    border-color: var(--accent) !important;
   }
 
   .nav-item.active::before { display: none; }
+
   .nav-item .n-badge {
     font-size: 9px !important;
     padding: 0 6px !important;
@@ -734,10 +716,10 @@ export interface PreviewNotification {
 
   .nav-foot { display: none !important; }
 
-  /* الـ stage */
   .stage {
     grid-template-rows: 52px minmax(0, 1fr) !important;
     min-width: 0;
+    width: 100%;
   }
 
   .stage-bar {
@@ -753,18 +735,10 @@ export interface PreviewNotification {
     max-width: 120px;
   }
 
-  .stage-search {
-    max-width: none !important;
-    height: 30px !important;
-    min-width: 100px;
-  }
-
-  .stage-search input { font-size: 11px !important; }
-  .search-kbd { display: none !important; }
+  .stage-search { display: none !important; }
 
   .tb-btn { padding: 5px 8px !important; }
   .tb-label { display: none !important; }
-
   .divider { margin: 0 2px !important; }
 
   .icon-btn,
@@ -787,20 +761,6 @@ export interface PreviewNotification {
 
   .wc svg { width: 10px !important; height: 10px !important; }
 
-  /* الـ stage body — horizontal scroll */
-  .stage-body {
-    overflow-x: auto !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    padding: 16px !important;
-  }
-
-  .stage-body > * {
-    min-width: 640px;
-  }
-
-  /* الـ dropdowns */
   .notif-drop {
     right: 8px !important;
     left: 8px !important;
@@ -812,120 +772,31 @@ export interface PreviewNotification {
     right: 8px !important;
     width: 260px !important;
   }
+
+  /* ═══════════════════════════════════════════════════════
+     🎯 CRITICAL FIX: stage-body fits screen — NO horizontal scroll
+     ═══════════════════════════════════════════════════════ */
+  .stage-body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 12px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  /* كل عنصر جوه stage-body يبقى بعرض الشاشة */
+  .stage-body > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
-/* ─────────── VERY SMALL PHONES ─────────── */
 @media (max-width: 380px) {
-  .stage-body > * {
-    min-width: 560px;
-  }
-
-  .crumbs {
-    max-width: 80px;
-  }
-}
-
-@media (max-width: 720px) {
-  .shell {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-  }
-
-  .stage-body {
-    overflow-x: hidden !important;
-    padding: 16px !important;
-  }
-
-  .stage-body > * {
-    min-width: 0 !important;
-    width: 100% !important;
-  }
-
-  /* Nav — horizontal pills */
-  .nav {
-    flex-direction: row !important;
-    height: auto !important;
-    border-right: 0 !important;
-    border-bottom: 0.5px solid var(--separator);
-    padding: 8px 4px !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav::-webkit-scrollbar { display: none; }
-  .collapse-btn { display: none !important; }
-  .nav-group-label { display: none !important; }
-  .nav-foot { display: none !important; }
-  .nav-items {
-    flex-direction: row !important;
-    flex: none !important;
-    gap: 4px !important;
-    padding: 0 6px !important;
-  }
-  .nav-item {
-    flex-shrink: 0 !important;
-    padding: 6px 12px !important;
-    border-radius: 999px !important;
-    font-size: 11px !important;
-    background: var(--bg-fill-2) !important;
-  }
-  .nav-item.active {
-    background: var(--accent) !important;
-    color: var(--accent-contrast) !important;
-  }
-  .nav-item.active::before { display: none; }
-}
-@media (max-width: 720px) {
-  .shell {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-  }
-
-  .stage-body {
-    overflow-x: hidden !important;
-    padding: 16px !important;
-  }
-
-  .stage-body > * {
-    min-width: 0 !important;
-    width: 100% !important;
-  }
-
-  /* Nav — horizontal pills */
-  .nav {
-    flex-direction: row !important;
-    height: auto !important;
-    border-right: 0 !important;
-    border-bottom: 0.5px solid var(--separator);
-    padding: 8px 4px !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav::-webkit-scrollbar { display: none; }
-  .collapse-btn { display: none !important; }
-  .nav-group-label { display: none !important; }
-  .nav-foot { display: none !important; }
-  .nav-items {
-    flex-direction: row !important;
-    flex: none !important;
-    gap: 4px !important;
-    padding: 0 6px !important;
-  }
-  .nav-item {
-    flex-shrink: 0 !important;
-    padding: 6px 12px !important;
-    border-radius: 999px !important;
-    font-size: 11px !important;
-    background: var(--bg-fill-2) !important;
-  }
-  .nav-item.active {
-    background: var(--accent) !important;
-    color: var(--accent-contrast) !important;
-  }
-  .nav-item.active::before { display: none; }
+  .stage-body { padding: 10px !important; }
+  .crumbs { max-width: 80px; }
 }
   `],
 })
